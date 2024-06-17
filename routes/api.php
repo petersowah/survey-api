@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/login', \App\Http\Controllers\AuthController::class);
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('surveys/{survey}/responses', \App\Http\Controllers\SurveyController::class . '@responses');
     Route::apiResource('/surveys', \App\Http\Controllers\SurveyController::class);
     Route::apiResource('/surveys/{survey}/questions', \App\Http\Controllers\QuestionController::class);
     Route::apiResource('/surveys/{survey}/questions/{question}/responses', \App\Http\Controllers\ResponseController::class);

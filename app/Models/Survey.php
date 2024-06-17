@@ -23,4 +23,9 @@ class Survey extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function responses(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    {
+        return $this->hasManyThrough(Response::class,Question::class);
+    }
 }

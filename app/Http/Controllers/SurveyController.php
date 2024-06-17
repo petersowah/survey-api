@@ -60,4 +60,11 @@ class SurveyController extends Controller
 
         return response()->noContent();
     }
+
+    public function responses(Request $request, Survey $survey)
+    {
+        collect($request->all())->each(fn($response) => $survey->responses()->create($response));
+
+        return new SurveyResource($survey);
+    }
 }
