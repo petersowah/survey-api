@@ -16,19 +16,14 @@ class QuestionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $survey = auth()->user()->surveys()->findOrFail($request->survey_id);
+        $question = $survey->questions()->create($request->all());
+
+        return response()->json($question, 201);
     }
 
     /**

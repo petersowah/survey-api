@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug');
+            $table->string('title')->unique();
             $table->text('description')->nullable();
             $table->timestamp('published_at');
             $table->foreignId('user_id');
