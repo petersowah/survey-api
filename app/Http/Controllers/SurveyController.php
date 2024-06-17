@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSurveyRequest;
+use App\Http\Requests\UpdateSurveyRequest;
 use App\Http\Resources\SurveyResource;
 use App\Models\Survey;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ class SurveyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Survey $survey): SurveyResource
+    public function update(UpdateSurveyRequest $request, Survey $survey): SurveyResource
     {
         $survey->update($request->only([
             'title', 'description'
@@ -61,7 +62,7 @@ class SurveyController extends Controller
         return response()->noContent();
     }
 
-    public function responses(Request $request, Survey $survey)
+    public function responses(Request $request, Survey $survey): SurveyResource
     {
         collect($request->all())->each(fn($response) => $survey->responses()->create($response));
 
