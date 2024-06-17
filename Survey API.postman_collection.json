@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "274d1797-e075-46b7-a3b2-a73c089bbaf4",
+		"name": "Survey API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "688194"
+	},
+	"item": [
+		{
+			"name": "survey-api.test/api/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"password\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/auth/login",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|4EKOyNPWNfiby9huk2Zo0JLlyV9PY5aF8o1YnbjD639a1525",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This is a test\",\n    \"description\": \"Test\"\n    // \"questions\": [\n    //     {\n    //         \"question\": \"Foo\",\n    //         \"question_type_id\": 1,\n    //         \"options\": [\"asd\", \"fgh\", \"jkl\"]\n    //     }\n    // ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys/1/questions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|4EKOyNPWNfiby9huk2Zo0JLlyV9PY5aF8o1YnbjD639a1525",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"question\": \"What that?\",\n   \"question_type_id\": 1,\n   \"survey_id\": 1,\n   \"options\": [\n        \"foo\", \"nar\", \"bar\"\n   ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys/1/questions",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys",
+						"1",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|4EKOyNPWNfiby9huk2Zo0JLlyV9PY5aF8o1YnbjD639a1525",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"question_id\": 1,\n        \"answer\": \"Fooo\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys/1",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys/1/questions/1/responses/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|4EKOyNPWNfiby9huk2Zo0JLlyV9PY5aF8o1YnbjD639a1525",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"answer\": \"Siuuuuu\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys/1/questions/1/responses/1",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys",
+						"1",
+						"questions",
+						"1",
+						"responses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys/1/questions/1/responses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|4EKOyNPWNfiby9huk2Zo0JLlyV9PY5aF8o1YnbjD639a1525",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"answer\": 33243\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys/1/questions/1/responses",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys",
+						"1",
+						"questions",
+						"1",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|P5dOM9tApeVam5nWfQl3vAtpM7tD35jZtjguVQGve006df7c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "survey-api.test/api/surveys",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|P5dOM9tApeVam5nWfQl3vAtpM7tD35jZtjguVQGve006df7c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This is a test\",\n    \"description\": \"Test\"\n    // \"questions\": [\n    //     {\n    //         \"question\": \"Foo\",\n    //         \"question_type_id\": 1,\n    //         \"options\": [\"asd\", \"fgh\", \"jkl\"]\n    //     }\n    // ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys/1",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys/1/responses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|4EKOyNPWNfiby9huk2Zo0JLlyV9PY5aF8o1YnbjD639a1525",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"question_id\": 1,\n        \"answer\": \"Fooo\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys/1/responses",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys",
+						"1",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "survey-api.test/api/surveys/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|4EKOyNPWNfiby9huk2Zo0JLlyV9PY5aF8o1YnbjD639a1525",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"question_id\": 1,\n        \"answer\": \"Fooo\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "survey-api.test/api/surveys/1",
+					"host": [
+						"survey-api",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
